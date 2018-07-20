@@ -27,6 +27,31 @@ export class ArticleComponent implements OnInit {
 
   readMore() : void {
     this.articleDescLen += this.symbols
-    // Continue
+    if (this.articleDescLen > this.articleDesc.length) {
+      this.showReadMoreBtn = false
+      this.showHideBtn = true
+    } else {
+      this.descToShow = this.articleDesc.substring(0, this.articleDescLen)
+    }
+  }
+
+  toggleImage() : void {
+    if (this.imageIsShown) {
+      this.imageIsShown = false
+      this.imageButtonTitle = "Show Image"
+    } else {
+      this.imageIsShown = true
+      this.imageButtonTitle = "Hide Image"
+    }
+    // OR
+    // this.imageIsShown = !this.imageIsShown
+    // this.imageButtonTitle = this.imageButtonTitle === "Show Image" ? "Hide Image" : "Show Image"
+  }
+
+  hideDesc() : void {
+    this.descToShow = ""
+    this.articleDescLen = 0
+    this.showReadMoreBtn = true
+    this.showHideBtn = false
   }
 }
