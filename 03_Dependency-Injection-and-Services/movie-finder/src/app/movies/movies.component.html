@@ -1,23 +1,28 @@
-<h2>{{title | titlecase}}</h2>
-<p>Nullam quis risus eget
-  <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-  Nullam id dolor id nibh ultricies vehicula.
-</p>
-<p>Nullam quis risus eget
-  <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-  Nullam id dolor id nibh ultricies vehicula.
-</p>
-<p>The following is
-  <strong>rendered as bold text</strong>.</p>
-<p>The following is
-  <em>rendered as italicized text</em>.</p>
-<p>An abbreviation of the word attribute is
-  <abbr title="attribute">attr</abbr>.</p>
-
-<p class="lead">
-  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-</p>
-
+<div class="jumbotron">
+  <h2>{{title | titlecase}}</h2>
+  <p>Search for a movie using the form below:</p>
+  <form #form="ngForm" (submit)="search(form.value)" class="form-inline my-2 my-lg-0">
+    <input name="search" ngModel class="form-control mr-sm-2" type="text" placeholder="Enter movie title...">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
+<!-- Matched movies -->
+<div *ngIf="searchResults" class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Matched Movies</h3>
+    </div>
+    <div class="panel-body">
+      <div *ngIf="searchResults" class="row">
+        <div *ngFor="let movie of searchResults.results;let i=index" class="col-md-2">
+  
+          <app-movie *ngIf="i < 6" [movie]="movie">
+          </app-movie>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Popular movies -->
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Popular Movies</h3>
@@ -33,7 +38,7 @@
     </div>
   </div>
 </div>
-
+<!-- In theaters movies -->
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">In Theaters</h3>
@@ -44,8 +49,41 @@
 
         <app-movie  *ngIf="i < 6" [movie]="movie">
         </app-movie>
-        
+
       </div>
     </div>
   </div>
 </div>
+<!-- Kids movies -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Kids</h3>
+    </div>
+    <div class="panel-body">
+      <div *ngIf="popularKids" class="row">
+        <div *ngFor="let movie of popularKids.results;let i=index" class="col-md-2">
+  
+          <app-movie  *ngIf="i < 6" [movie]="movie">
+          </app-movie>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Best drama movies -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Best dramas</h3>
+    </div>
+    <div class="panel-body">
+      <div *ngIf="bestDramas" class="row">
+        <div *ngFor="let movie of bestDramas.results;let i=index" class="col-md-2">
+  
+          <app-movie  *ngIf="i < 6" [movie]="movie">
+          </app-movie>
+  
+        </div>
+      </div>
+    </div>
+  </div>
