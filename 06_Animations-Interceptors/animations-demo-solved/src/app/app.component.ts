@@ -21,11 +21,11 @@ export class AppComponent {
 
     onAnimate() {
       this.state == "normal" 
-        ?  this.state = "highlighted" 
+        ? this.state = "highlighted" 
         : this.state = "normal"
 
         this.wildState == "normal" 
-        ?  this.wildState = "highlighted" 
+        ? this.wildState = "highlighted" 
         : this.wildState = "normal"
     }
 

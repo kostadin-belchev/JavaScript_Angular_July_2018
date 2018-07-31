@@ -38,7 +38,8 @@ export class AuthenticationService {
   }
 
   checkIfLoggedIn() {
-    return this.currentAuthtoken === localStorage.getItem('authtoken')
+    // return this.currentAuthtoken === localStorage.getItem('authtoken')
+    return localStorage.getItem('authtoken') !== null
   }
   
   login(loginModel: LoginModel) {

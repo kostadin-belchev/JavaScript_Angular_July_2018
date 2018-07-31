@@ -6,7 +6,7 @@ import {
   style,
   keyframes,
   group
- } from '@angular/animations';
+} from '@angular/animations';
 
 const appAnimations =  [
   trigger('divState', [
