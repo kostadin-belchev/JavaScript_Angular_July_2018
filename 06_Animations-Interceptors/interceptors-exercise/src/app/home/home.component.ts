@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser) {
-       this.username = JSON.parse(localStorage.getItem('currentUser')).username;
+      this.username = JSON.parse(localStorage.getItem('currentUser')).username;
     }
   }
 
