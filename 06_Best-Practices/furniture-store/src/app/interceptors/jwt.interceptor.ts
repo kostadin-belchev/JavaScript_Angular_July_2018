@@ -44,13 +44,19 @@ export class JwtInterceptor implements HttpInterceptor {
         this.toastr.success(res.body.message, 'Success!')
         this.router.navigate(['/furniture/all'])
       }
+
+      if (res instanceof HttpResponse && res.body.success && res.url.includes('edit')) {
+        this.toastr.success(res.body.message || 'Item edited succussfully.', 'Success!')
+        this.router.navigate(['/furniture/all'])
+      }
     }))
   }
 
   private saveToken(data) {
     localStorage.setItem('currentUser', JSON.stringify({
       "username": data.user.name,
-      "token": data.token
+      "token": data.token,
+      "isAdmin": data.user.isAdmin
     }))
   }
 }

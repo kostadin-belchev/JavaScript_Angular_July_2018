@@ -9,6 +9,7 @@ import { CreateFurnitureComponent } from './furniture/create-furniture/create-fu
 import { AllFurnitureComponent } from './furniture/all-furniture/all-furniture.component';
 import { FurnitureDetailsComponent } from './furniture/furniture-details/furniture-details.component';
 import { MyFurnitureComponent } from './furniture/my-furniture/my-furniture.component';
+import { FurnitureModule } from './furniture/furniture.module';
 
 const routes : Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -16,14 +17,7 @@ const routes : Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   {
-    path: 'furniture', // component: Component,
-    children: [
-      { path: 'create', component: CreateFurnitureComponent },
-      { path: 'all', component: AllFurnitureComponent },
-      { path: 'details/:id', component: FurnitureDetailsComponent},
-      { path: 'mine', component: MyFurnitureComponent},
-      { path: 'delete/:id', component: MyFurnitureComponent},
-    ]
+    path: 'furniture', loadChildren: () => FurnitureModule
   }
 ]
 

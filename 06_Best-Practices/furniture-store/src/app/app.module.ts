@@ -6,46 +6,33 @@ import { AppRoutingModule } from './app.routing';
 import { ToastrModule } from 'ngx-toastr'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CustomFormsModule } from 'ng2-validation'
+import { AuthModule } from './authentication/auth.module';
+import { FurnitureModule } from './furniture/furniture.module';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { SigninComponent } from './authentication/signin/signin.component';
-import { SignupComponent } from './authentication/signup/signup.component';
 import { HomeComponent } from './home/home.component';
-import { AuthService } from './authentication/auth.service';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { AllFurnitureComponent } from './furniture/all-furniture/all-furniture.component';
-import { CreateFurnitureComponent } from './furniture/create-furniture/create-furniture.component';
-import { FurnitureDetailsComponent } from './furniture/furniture-details/furniture-details.component';
-import { MyFurnitureComponent } from './furniture/my-furniture/my-furniture.component';
-import { FurnitureService } from './furniture/furniture.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    SigninComponent,
-    SignupComponent,
-    HomeComponent,
-    AllFurnitureComponent,
-    CreateFurnitureComponent,
-    FurnitureDetailsComponent,
-    MyFurnitureComponent
+    HomeComponent
   ],
   imports: [
-    BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    CustomFormsModule
+    CustomFormsModule,
+    AuthModule,
+    FurnitureModule
   ],
-  providers: [ 
-    AuthService,
-    FurnitureService,
+  providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
