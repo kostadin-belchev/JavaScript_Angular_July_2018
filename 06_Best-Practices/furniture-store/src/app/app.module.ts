@@ -23,6 +23,7 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     HomeComponent
   ],
   imports: [
+    BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
