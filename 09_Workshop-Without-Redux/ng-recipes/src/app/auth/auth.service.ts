@@ -18,7 +18,6 @@ export class AuthService {
   
   sighUp(email: string, password: string) {
     firebase.auth().createUserWithEmailAndPassword(email, password).then(data => {
-      console.log(data)
       this.toastrService.success('Registered successfully.', 'Success')
       this.router.navigate(['/auth/signin'])
     }).catch(err => this.toastrService.error(err.message, 'Warning'))
@@ -26,7 +25,6 @@ export class AuthService {
 
   signIn(email: string, password: string) {
     firebase.auth().signInWithEmailAndPassword(email, password).then(data => {
-      console.log(data)
       firebase.auth().currentUser.getIdToken().then((token: string) => this.token = token)
       this.toastrService.success('Logged in successfully.', 'Success')
       this.router.navigate(['/recipes'])
