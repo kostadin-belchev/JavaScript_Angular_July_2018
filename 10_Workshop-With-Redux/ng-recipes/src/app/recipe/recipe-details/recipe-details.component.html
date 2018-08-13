@@ -1,0 +1,35 @@
+<div *ngIf="recipe$ | async as r; else loading">
+    <div class="row">
+        <div class="col-xs-12">
+          <img
+            src="{{r.imagePath}}"
+            alt="{{r.name}}"
+            class="img-responsive"
+            style="max-height: 300px;">
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <h1>{{r.name}}</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <ul>
+                <li><a style="cursor: pointer;" routerLink="/recipes/edit/{{recipeId}}">Edit Recipe</a></li>
+                <li><a style="cursor: pointer;" routerLink (click)="deleteRecipe(recipeId)">Delete Recipe</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+              {{r.description}}
+          </div>
+      </div>
+</div>
+
+<ng-template #loading>
+    Loading stuff...
+</ng-template>
+
+  

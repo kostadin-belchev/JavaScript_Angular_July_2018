@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-xs-12">
+      <form #createForm="ngForm" (ngSubmit)="createRecipe()">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                required
+                type="text"
+                id="name"
+                name="name"
+                #name="ngModel"
+                [(ngModel)]="model.name"
+                class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="imagePath">Image URL</label>
+              <input
+                required
+                type="text"
+                id="imagePath"
+                name="imagePath"
+                #imagePath="ngModel"
+                [(ngModel)]="model.imagePath"
+                class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <img src="{{model.imagePath}}" class="img-responsive">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <textarea
+                required
+                type="text"
+                id="description"
+                class="form-control"
+                name="description"
+                #description="ngModel"
+                [(ngModel)]="model.description"
+                rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+      <button class="btn btn-primary" [disabled]="createForm.invalid" type="submit">Create</button>
+      </form>
+    </div>
+  </div>
+  
