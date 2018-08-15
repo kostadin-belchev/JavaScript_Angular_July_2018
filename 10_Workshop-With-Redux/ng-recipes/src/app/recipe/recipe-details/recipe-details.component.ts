@@ -4,7 +4,7 @@ import { RecipeService } from '../recipe.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Store, select } from '../../../../node_modules/@ngrx/store';
+import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.state';
 
 @Component({

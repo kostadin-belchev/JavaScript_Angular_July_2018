@@ -3,7 +3,8 @@ import * as RecipesActions from '../actions/recipes.actions'
 
 const initialState: RecipesState = {
   all: [],
-  details: null
+  details: null,
+  toEdit: null
 }
 
 function getAllRecipes(state, allRecipes) {
@@ -18,6 +19,12 @@ function getRecipeDetails(state, recipeDetails) {
   })
 }
 
+function getRecipeToEdit(state, recipeToEdit) {
+  return Object.assign({}, state, {
+    toEdit: recipeToEdit
+  })
+}
+
 export function recipesReducer(
   state: RecipesState = initialState,
   action: RecipesActions.Types
@@ -27,6 +34,8 @@ export function recipesReducer(
       return getAllRecipes(state, action.payload)
     case RecipesActions.GET_RECIPE_DETAILS:
       return getRecipeDetails(state, action.payload)
+    case RecipesActions.GET_RECIPE_TO_EDIT:
+      return getRecipeToEdit(state, action.payload)
     default:
       return state
   }

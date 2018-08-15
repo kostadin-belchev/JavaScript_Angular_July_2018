@@ -5,7 +5,7 @@ import { RecipeListItemModel } from './models/recipe-list-item.model';
 import { RecipeCreateModel } from './models/recipe-create.model';
 import { Store } from '../../../node_modules/@ngrx/store';
 import { AppState } from '../store/app.state';
-import { GetAllRecipes, GetRecipeDetails } from '../store/actions/recipes.actions';
+import { GetAllRecipes, GetRecipeDetails, GetRecipeToEdit } from '../store/actions/recipes.actions';
 
 const baseUrl = 'https://ng-recipes-cb703.firebaseio.com/recipes/'
 
@@ -39,6 +39,12 @@ export class RecipeService {
   getById(recipeId: string) {
     return this.httpClient.get<RecipeListItemModel>(baseUrl + recipeId + '/.json').pipe(map((recipe: RecipeListItemModel) => {
       this.store.dispatch(new GetRecipeDetails(recipe))
+    }))
+  }
+
+  getRecipeToEditById(recipeId: string) {
+    return this.httpClient.get<RecipeCreateModel>(baseUrl + recipeId + '/.json').pipe(map((recipe: RecipeCreateModel) => {
+      this.store.dispatch(new GetRecipeToEdit(recipe))
     }))
   }
 
